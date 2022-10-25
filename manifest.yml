@@ -1,0 +1,32 @@
+# Generated manifest.yml based on template version 0.1.0
+# appName = zdatastreet-business
+# language=nodejs
+# multitenancy=false
+---
+applications:
+# -----------------------------------------------------------------------------------
+# Backend Service
+# -----------------------------------------------------------------------------------
+- name: zdatastreet-business-srv
+  random-route: true  # for development only
+  path: gen/srv
+  memory: 256M
+  buildpack: nodejs_buildpack
+  services:
+  - zdatastreet-business-db
+  - zdatastreet-business-xsuaa
+  - zdatastreet-business-destination-service
+
+# -----------------------------------------------------------------------------------
+# HANA Database Content Deployer App
+# -----------------------------------------------------------------------------------
+- name: zdatastreet-business-db-deployer
+  path: gen/db
+  no-route: true
+  health-check-type: process
+  memory: 256M
+  instances: 1
+  buildpack: nodejs_buildpack
+  services:
+  - zdatastreet-business-db
+  - zdatastreet-business-destination-service

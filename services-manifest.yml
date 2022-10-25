@@ -1,0 +1,16 @@
+# Generated services-manifest.yml based on template version 0.1.0
+# appName = zdatastreet-business
+---
+create-services:
+# ------------------------------------------------------------
+  - name:   zdatastreet-business-db
+    broker: hana  # 'hanatrial' on trial landscapes
+    plan: "hdi-shared"
+# ------------------------------------------------------------
+  - name:   zdatastreet-business-xsuaa
+    broker: xsuaa
+    plan: application
+# ------------------------------------------------------------
+  - name: zdatastreet-business-destination-service
+    broker: destination
+    plan: "lite"

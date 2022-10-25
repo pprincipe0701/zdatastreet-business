@@ -1,0 +1,108 @@
+### Submit Orders
+POST http://localhost:4004/service/zbusiness/MovimientoDiarioCustom
+Content-Type: application/json
+
+{ 
+            "razonSocial":"LIBRERIA JUANITO",
+            "direccion": "CALLE LAS PALMAS 235",
+            "horarioApertura": "08:00",
+            "horarioCierre":"20:00",
+            "otroRubro":"",
+            "coordenada":"313213214234,2321321", 
+            "idRubro":1, 
+            "idDistrito":1,                                  
+            "idAfluencia":3,
+            "idTipoPublico":2,
+            "idEstacionTemporada":1,            
+            "registrador":"PPRINCIPE",
+            "idNivelCompetencia":1,
+            //"fechaRegistro":,
+            //"horaRegistro":,
+            "flagFinanciera":"X",
+            "obsFinanciera":"fi_01",
+            "flagCentroEducativo":"",
+            "obsCentroEducativo":"",
+            "flagCentroSalud":"X",
+            "obsCentroSalud":"cs_01",
+            "flagIglesia":"X",
+            "obsIglesia":"igl_1",
+            "flagAlquiler":"X",
+            "obsAlquiler":"alqui_1",
+            "idMasterZona":2,
+            "status":"1",
+            "observacionGeneral":"Obs General",
+             "idEstablecimiento":"3c7ca282-456b-418b-b432-ba8558f57f09"       
+}
+### List Books with their current stocks
+GET http://localhost:4004/service/zcapacitacion/TuitionCustom
+
+### Submit Orders
+POST  http://localhost:4004/service/zadmin/MasterDistritos
+Content-Type: application/json
+
+{
+"ID":19,
+"description":"San Borja",
+"status":"0"
+}
+
+### List all Orders
+GET http://localhost:4004/service/zcapacitacion/Courses/da2479e2-38dd-4541-b9fa-610a6a080ad3?
+&$expand=calendars
+
+### Submit Orders
+POST http://localhost:4004/service/zcapacitacion/Courses
+Content-Type: application/json
+
+{ "name":"Angular2", "description":"Angular es una de los frameworks front  mas usados para app empresariales","totalHours":24,"cost":250,"currency":"USD","masterLevel_ID":1,"calendars":[{
+    "startDate":"2022-10-20",
+    "startHour":"08:00",
+    "endHour":"10:00",
+    "masterFrequence_ID":1,
+    "masterModality_ID":2
+   },
+   {
+    "startDate":"2022-11-20",
+    "startHour":"12:00",
+    "endHour":"14:00",
+    "masterFrequence_ID":2,
+    "masterModality_ID":2
+   }
+]}
+
+# Sending this three times should result in a 409: 5 exceeds stock for book #201
+### Submit Orders
+PATCH http://localhost:4004/service/zcapacitacion/Courses/5d143f61-6f11-4efc-aada-714853cb8f04
+Content-Type: application/json
+
+{ "name":"Angular2x", "description":"Angularx es una de los frameworks front  mas usados para app empresariales","totalHours":24,"cost":300,"currency":"USD","masterLevel_ID":2,"calendars":[
+   {
+    "startDate":"2022-08-15",
+    "startHour":"20:00",
+    "endHour":"22:00",
+    "masterFrequence_ID":2,
+    "masterModality_ID":2,
+    "ID": "5abd903e-4fe6-4ba2-8b38-39d0fff31ad6"
+    
+   },
+   {
+    "startDate":"2022-10-20",
+    "startHour":"12:00",
+    "endHour":"16:00",
+    "masterFrequence_ID":2,
+    "masterModality_ID":2,
+    "ID": "12af2825-d2fb-42d2-8011-94c70dc7729d"
+    
+   }
+]}
+### Submit Orders
+POST http://localhost:4004/service/masteradmin/Tuitions
+Content-Type: application/json
+
+{ 
+"code":"Pavel",
+"calendar_ID":"7dfb146e-cc84-4efe-9975-9d676881c64d",
+"competitor_ID":"d7176dec-493c-4ca1-bffa-c052cc10ea91",
+"status":"1"
+
+}
