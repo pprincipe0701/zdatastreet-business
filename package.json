@@ -21,7 +21,7 @@
   },
   "scripts": {
     "start": "cds run"
-  },
+  },  
   "eslintConfig": {
     "extends": "eslint:recommended",
     "env": {
@@ -49,15 +49,15 @@
   },
   "cds": {
     "requires": {
-        "db": {
-            "kind": "sql"
-        },
-        "xsuaa": {
-            "kind": "xsuaa"
-        }
+      "db": {
+        "kind": "sql"
+      },
+      "xsuaa": {
+        "kind": "xsuaa"
+      }
     },
     "hana": {
-        "deploy-format": "hdbtable"
+      "deploy-format": "hdbtable"
     }
   }
 }
