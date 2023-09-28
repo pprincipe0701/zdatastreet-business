@@ -6,7 +6,16 @@ entity MasterTipoPublicos : managed {
   description   : String(50); 
   status   : String(2);  
 };
-
+@assert.unique: {
+  MasterUsuarios_uk: [ nombre,usuarioBtp, status ]
+  
+}
+entity MasterUsuarios : managed {
+  key ID : Integer;
+  nombre   : String(50); 
+  usuarioBtp   : String(50); 
+  status   : String(2);  
+};
 
 
 entity MasterDistritos : managed {
@@ -35,6 +44,20 @@ entity MasterAfluencias : managed {
   key ID : Integer;
   description   : String(50);
   status   : String(2);   
+};
+@assert.unique: {
+  MasterTicket_uk: [ codigoTicket ]
+  
+}
+entity MasterTicket : managed {
+  key ID : UUID;
+  codigoTicket   : String(25);
+  latitud   : String(255);
+  longitud   : String(255);
+  status   : String(2);
+  fechaRegistro: Date;
+  horaRegistro: String(5);
+  masterUsuario:Association to MasterUsuarios;   
 };
 
 entity MasterRubros : managed {
@@ -96,8 +119,10 @@ entity MovimientosDiarios : managed {
   masterAfluencia:Association to MasterAfluencias;
   masterNivelCompetencia:Association to MasterNivelCompetencias;
   masterTipoPublico:Association to MasterTipoPublicos;
+  masterUsuario:Association to MasterUsuarios;
   masterEstacionTemporada:Association to MasterEstacionesTemporadas;   
   registrador: String(100);
+  codigoTicket   : String(25);
   fechaRegistro: Date;
   horaRegistro: String(5);
   flagFinanciera: String(1);
@@ -111,5 +136,5 @@ entity MovimientosDiarios : managed {
    flagAlquiler: String(1);
   obsAlquiler: String(1000);
   observacionGeneral: String(1000);
-  status: String(2);
+  status: String(2);  
 };
